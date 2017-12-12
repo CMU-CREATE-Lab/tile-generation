@@ -3610,16 +3610,12 @@
           "admin_level",
           2,
           4
-        ],
-        [
-          "==",
-          "maritime",
-          1
         ]
       ],
       "layout": {
         "line-cap": "round",
-        "line-join": "round"
+        "line-join": "round",
+        "visibility": "visible"
       },
       "paint": {
         "line-color": "rgba(154, 189, 214, 1)",
