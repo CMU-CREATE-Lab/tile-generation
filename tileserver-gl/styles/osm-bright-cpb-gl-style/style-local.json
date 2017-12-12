@@ -3610,6 +3610,11 @@
           "admin_level",
           2,
           4
+        ],
+        [
+          ">",
+          "maritime",
+          24
         ]
       ],
       "layout": {
