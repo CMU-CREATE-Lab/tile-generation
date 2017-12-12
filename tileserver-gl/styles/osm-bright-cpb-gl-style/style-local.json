@@ -540,7 +540,7 @@
       "source": "openmaptiles",
       "source-layer": "water",
       "layout": {
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "fill-translate": [
