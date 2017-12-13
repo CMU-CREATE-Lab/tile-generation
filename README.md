@@ -159,6 +159,8 @@ From this project's root directory, launch Maputnik to edit the OSM Bright CPB s
 ./maputnik/maputnik_darwin --watch --file ./tileserver-gl/styles/osm-bright-cpb-gl-style/maputnik-style-local.json
 ```
 
+Then open a browser and go to [http://localhost:8000](http://localhost:8000).
+
 If you make changes, don't forget to apply them (but not the three URLs shown above!) to `style-local.json`.
 
 ### The Style Editing and Verification Process
