@@ -1,4 +1,5 @@
 .DS_Store
 *.iws
 *.mbtiles
-fonts-v1.1
+tileserver-gl/fonts
+mapbox-gl-native/node_modules

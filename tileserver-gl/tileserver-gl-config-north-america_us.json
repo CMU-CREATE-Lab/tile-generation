@@ -2,7 +2,7 @@
   "options": {
     "paths": {
       "root": "/usr/src/app/node_modules/tileserver-gl-styles",
-      "fonts": "/createlab/fonts-v1.1",
+      "fonts": "/createlab/fonts",
       "styles": "/createlab/styles",
       "mbtiles": "/createlab/mbtiles"
     }
