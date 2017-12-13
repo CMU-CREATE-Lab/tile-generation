@@ -4211,7 +4211,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "poi",
-      "minzoom": 14,
+      "minzoom": 15,
       "filter": [
         "all",
         [
@@ -4262,7 +4262,7 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "poi",
-      "minzoom": 14,
+      "minzoom": 15,
       "filter": [
         "all",
         [
@@ -4306,7 +4306,8 @@
         "text-color": "#666",
         "text-halo-width": 1,
         "text-halo-color": "#ffffff"
-      }
+      },
+      "maxzoom": 24
     },
     {
       "id": "poi-railway",
