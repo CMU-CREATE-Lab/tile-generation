@@ -4,15 +4,15 @@ A collection of tools--with (hopefully) clear documentation--for generating rast
 
 ## The Backstory
 
-We need an easy way to not only create map styles, but to apply those styles to vector map data (such as the [planet data available from OpenMapTiles](https://openmaptiles.com/downloads/planet/)) and create raster tiles.  Tilemill works (well, with map data in postgres or whatever it was), but it sucks for creating styles because it’s so painfully slow.  And we’ve tried twice and failed to produce retina tiles with it.
+We need an easy way to not only create map styles, but to apply those styles to vector map data (such as the [planet data available from OpenMapTiles](https://openmaptiles.com/downloads/planet/)) and create raster tiles.  Tilemill works (well, with map data in postgres or whatever it was), but it sucks for creating styles because it's so painfully slow.  And we've tried twice and failed to produce retina tiles with it.
 
-Maputnik is an easy-to-use and fast style editor, producing Mapbox GL styles.  So that’s one piece. We now need a way to apply that style to vector map data. I’ve searched, and searched, and *searched*, and I still can’t find a simple solution for doing what we want.  One guy [shared a script and uses TileQueue](https://github.com/openmaptiles/openmaptiles/issues/291#issuecomment-350310719) (which is yet another thing I’ve never heard of).  Another guy [suggested tilelive-http](https://github.com/openmaptiles/openmaptiles/issues/291#issuecomment-350241461). But the docs are rather lacking and it’s not immediately clear to me if that’ll work.  Or if some other tilelive source/sink combo will do what I want.  There used to be a plugin called [tilelive-gl](https://www.npmjs.com/package/tilelive-gl), but it’s no longer maintained and says to just use [mapbox-gl-native](https://www.npmjs.com/package/mapbox-gl-native) directly instead.
+Maputnik is an easy-to-use and fast style editor, producing Mapbox GL styles.  So that's one piece. We now need a way to apply that style to vector map data. I've searched, and searched, and *searched*, and I still can't find a simple solution for doing what we want.  One guy [shared a script and uses TileQueue](https://github.com/openmaptiles/openmaptiles/issues/291#issuecomment-350310719) (which is yet another thing I've never heard of).  Another guy [suggested tilelive-http](https://github.com/openmaptiles/openmaptiles/issues/291#issuecomment-350241461). But the docs are rather lacking and it's not immediately clear to me if that'll work.  Or if some other tilelive source/sink combo will do what I want.  There used to be a plugin called [tilelive-gl](https://www.npmjs.com/package/tilelive-gl), but it's no longer maintained and says to just use [mapbox-gl-native](https://www.npmjs.com/package/mapbox-gl-native) directly instead.
 
 So, is mapbox-gl-native what we want? Beats the crap out of me. The sample code for [node-mapbox-gl-native](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/node) seems like it might work if I can get all the various pieces working.
 
-But I think I can do what I want by running Tileserver GL, pointing at both my mbtiles archive and my Maputnik-generated style and then running a script to manually request every tile for every layer I want. If that fails miserably, then I’ll try with mapbox-gl-native and document the whole mess here.
+But I think I can do what I want by running Tileserver GL, pointing at both my mbtiles archive and my Maputnik-generated style and then running a script to manually request every tile for every layer I want. If that fails miserably, then I'll try with mapbox-gl-native and document the whole mess here.
 
-Note: I’m trying with [Tileserver GL](https://openmaptiles.org/docs/host/tileserver-gl/) instead of [OpenMapTiles Server](https://openmaptiles.com/server/) because there are more docs for it, and the latter might be more restrictive as far as licensing, I have no idea, and no interest or time to find out for sure.
+Note: I'm trying with [Tileserver GL](https://openmaptiles.org/docs/host/tileserver-gl/) instead of [OpenMapTiles Server](https://openmaptiles.com/server/) because there are more docs for it, and the latter might be more restrictive as far as licensing, I have no idea, and no interest or time to find out for sure.
 
 ## How to Generate Tiles
 
@@ -24,15 +24,15 @@ First, you'll need Tileserver GL installed.  There are at least a couple ways to
 
 #### Installing with Node.js
 
-The tl;dr is that you shouldn’t even bother trying to just do the simple `npm install -g tileserver-gl` method.  You’ll go crazy.  If you use Node.js 8.x, it’ll fail due to a 403 when pulling one of the assets.  Turns out you need to have Node 6.x (see https://github.com/klokantech/tileserver-gl/issues/216).  I switched to Node.js 6.12.1 and retried and, hey, guess what?!?  That failed too with this lovely error:
+The tl;dr is that you shouldn't even bother trying to just do the simple `npm install -g tileserver-gl` method.  You'll go crazy.  If you use Node.js 8.x, it'll fail due to a 403 when pulling one of the assets.  Turns out you need to have Node 6.x (see https://github.com/klokantech/tileserver-gl/issues/216).  I switched to Node.js 6.12.1 and retried and, hey, guess what?!?  That failed too with this lovely error:
 
 `ENOENT: no such file or directory, rename '/Users/chris/n/lib/node_modules/.staging/@mapbox/point-geometry-c12f351f' -> '/Users/chris/n/lib/node_modules/tileserver-gl/node_modules/@mapbox/point-geometry'`
 
-Googling that and you’ll find a bunch of posts which pretty much just say, “screw it, man, just use docker”.  So, using Docker...
+Googling that and you'll find a bunch of posts which pretty much just say, “screw it, man, just use docker”.  So, using Docker...
 
 #### Installing with Docker
 
-Despite complaints from coworkers about how annoying Docker is, it seems to be my best (only?) option for the Mac, so I installed Docker (https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) and ran it.  I have a new icon in my menubar now. Great, who knows what that’s good for.
+Despite complaints from coworkers about how annoying Docker is, it seems to be my best (only?) option for the Mac, so I installed Docker (https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) and ran it.  I have a new icon in my menubar now. Great, who knows what that's good for.
 
 Following the instructions at [https://openmaptiles.org/docs/host/tileserver-gl/](https://openmaptiles.org/docs/host/tileserver-gl/), I installed tileserver-gl by doing this:
 
@@ -115,7 +115,7 @@ Instructions for installing are here:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/maputnik/editor
 
-What they don’t make clear is that installing it fails with both Node.js 4.x and 6.x.  I finally got it installed with Node.js 8.9.2.  But, they also don't make clear how you can use this version to edit an existing file, other than doing an "upload".  The pre-built binary version has an option to specify an JSON style file, and even watch for external changes to that file.  That's easier, so just use the latest prebuilt binary, which you'll find here (I'm using `maputnik_darwin` v1.0.1):
+What they don't make clear is that installing it fails with both Node.js 4.x and 6.x.  I finally got it installed with Node.js 8.9.2.  But, they also don't make clear how you can use this version to edit an existing file, other than doing an "upload".  The pre-built binary version has an option to specify an JSON style file, and even watch for external changes to that file.  That's easier, so just use the latest prebuilt binary, which you'll find here (I'm using `maputnik_darwin` v1.0.1):
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/maputnik/editor/releases
 
