@@ -28,7 +28,7 @@ The tl;dr is that you shouldn't even bother trying to just do the simple `npm in
 
 `ENOENT: no such file or directory, rename '/Users/chris/n/lib/node_modules/.staging/@mapbox/point-geometry-c12f351f' -> '/Users/chris/n/lib/node_modules/tileserver-gl/node_modules/@mapbox/point-geometry'`
 
-Googling that and you'll find a bunch of posts which pretty much just say, “screw it, man, just use docker”.  So, using Docker...
+Googling that and you'll find a bunch of posts which pretty much just say, "screw it, man, just use docker".  So, using Docker...
 
 #### Installing with Docker
 
