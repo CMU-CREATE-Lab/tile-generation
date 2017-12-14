@@ -190,3 +190,5 @@ $ node index.js
 ```
 
 For deeper zoom levels, you'll get a progress report every 5%.
+
+Once you have some tiles generated, you can preview them using the `tile-viewer.html` file, which you'll also need to edit accordingly.
