@@ -1,0 +1,61 @@
+{
+  "options": {
+    "paths": {
+      "root": "/usr/src/app/node_modules/tileserver-gl-styles",
+      "fonts": "/createlab/fonts",
+      "styles": "/createlab/styles",
+      "mbtiles": "/createlab/mbtiles"
+    }
+  },
+  "styles": {
+    "klokantech-basic": {
+      "style": "klokantech-basic-gl-style-v1.3/style-local.json",
+      "tilejson": {
+        "bounds": [
+          -180,
+          -85.0511,
+          180,
+          85.0511
+        ]
+      }
+    },
+    "osm-bright": {
+      "style": "osm-bright-gl-style-v1.3/style-local.json",
+      "tilejson": {
+        "bounds": [
+          -180,
+          -85.0511,
+          180,
+          85.0511
+        ]
+      }
+    },
+    "osm-bright-cpb": {
+      "style": "osm-bright-cpb-gl-style/style-local.json",
+      "tilejson": {
+        "bounds": [
+          -180,
+          -85.0511,
+          180,
+          85.0511
+        ]
+      }
+    },
+    "positron": {
+      "style": "positron-gl-style-v1.4/style-local.json",
+      "tilejson": {
+        "bounds": [
+          -180,
+          -85.0511,
+          180,
+          85.0511
+        ]
+      }
+    }
+  },
+  "data": {
+    "v3": {
+      "mbtiles": "2017-07-03_planet_z0_z14.mbtiles"
+    }
+  }
+}
