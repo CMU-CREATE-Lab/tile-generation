@@ -1,0 +1,16 @@
+{
+  "name": "tile-fetcher",
+  "version": "1.0.0",
+  "description": "Fetches and saves raster tiles from Tileserver GL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Bartley <bartley@cmu.edu>",
+  "license": "ISC",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "nimble": "0.0.2",
+    "superagent-ls": "^1.4.0"
+  }
+}

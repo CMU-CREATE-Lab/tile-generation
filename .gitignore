@@ -3,3 +3,5 @@
 *.mbtiles
 tileserver-gl/fonts
 mapbox-gl-native/node_modules
+tile-fetcher/node_modules
+tile-fetcher/tiles

@@ -10,7 +10,7 @@ Maputnik is an easy-to-use and fast style editor, producing Mapbox GL styles.  S
 
 So, is mapbox-gl-native what we want? Beats the crap out of me. The sample code for [node-mapbox-gl-native](https://github.com/mapbox/mapbox-gl-native/tree/master/platform/node) seems like it might work if I can get all the various pieces working.
 
-But I think I can do what I want by running Tileserver GL, pointing at both my mbtiles archive and my Maputnik-generated style and then either writing a script to manually request every tile for every layer I want, or perhaps by using TileStache to automate it. If that fails miserably, then IÕll try with mapbox-gl-native and document the whole mess here.
+But I think I can do what I want by running Tileserver GL, pointing at both my mbtiles archive and my Maputnik-generated style and then running a script to manually request every tile for every layer I want. If that fails miserably, then IÕll try with mapbox-gl-native and document the whole mess here.
 
 Note: IÕm trying with [Tileserver GL](https://openmaptiles.org/docs/host/tileserver-gl/) instead of [OpenMapTiles Server](https://openmaptiles.com/server/) because there are more docs for it, and the latter might be more restrictive as far as licensing, I have no idea, and no interest or time to find out for sure.
 
@@ -173,3 +173,20 @@ Here's what to do to edit a style:
 ### Generating Tiles
 
 At long last, we can finally generate the tiles...
+
+It's simple enough to just write a script to fetch all tiles for a given level and lat/long bounding box directly from Tileserver GL, so that's what I did.  It's a Node.js script in the `tile-fetcher` directory. I used Node.js 8.9.2, but it might work for other versions.  
+
+Do this to install dependencies:
+
+```
+$ cd tile-fetcher
+$ npm install
+```
+
+You'll probably want to edit some settings in the `index.js` file.  I'll document this better later, but that's where you specify the lat/long bounding box, the zoom level, how many concurrent tile fetchers you want running, the URL pattern for Tileserver GL PNGs, and the directory where tiles should be saved. Once you get all that defined, just run it with:
+
+```
+$ node index.js
+```
+
+For deeper zoom levels, you'll get a progress report every 5%.

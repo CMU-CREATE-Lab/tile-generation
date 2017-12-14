@@ -4,6 +4,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/mbtiles" />
+      <excludeFolder url="file://$MODULE_DIR$/tile-fetcher/tiles" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
