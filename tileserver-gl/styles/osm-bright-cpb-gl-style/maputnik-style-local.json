@@ -216,7 +216,9 @@
         "$type",
         "Polygon"
       ],
-      "layout": {},
+      "layout": {
+        "visibility": "none"
+      },
       "paint": {
         "line-color": {
           "base": 1,
