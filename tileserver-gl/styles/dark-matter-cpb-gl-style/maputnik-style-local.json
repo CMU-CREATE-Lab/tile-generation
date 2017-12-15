@@ -1299,9 +1299,17 @@
       "source": "openmaptiles",
       "source-layer": "boundary",
       "filter": [
-        "==",
-        "admin_level",
-        4
+        "all",
+        [
+          "==",
+          "admin_level",
+          4
+        ],
+        [
+          "==",
+          "maritime",
+          0
+        ]
       ],
       "layout": {
         "line-cap": "round",
@@ -1340,9 +1348,17 @@
       "source": "openmaptiles",
       "source-layer": "boundary",
       "filter": [
-        "==",
-        "admin_level",
-        2
+        "all",
+        [
+          "==",
+          "admin_level",
+          2
+        ],
+        [
+          "==",
+          "maritime",
+          0
+        ]
       ],
       "layout": {
         "line-cap": "round",
@@ -2654,5 +2670,5 @@
       }
     }
   ],
-    "id": "ciwf4jmfe00882qmzvu5vh0zx"
+  "id": "ciwf4jmfe00882qmzvu5vh0zx"
 }

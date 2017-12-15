@@ -1299,9 +1299,17 @@
       "source": "openmaptiles",
       "source-layer": "boundary",
       "filter": [
+        "all",
+        [
         "==",
         "admin_level",
         4
+      ],
+        [
+          "==",
+          "maritime",
+          0
+        ]
       ],
       "layout": {
         "line-cap": "round",
@@ -1340,9 +1348,17 @@
       "source": "openmaptiles",
       "source-layer": "boundary",
       "filter": [
+        "all",
+        [
         "==",
         "admin_level",
         2
+      ],
+        [
+          "==",
+          "maritime",
+          0
+        ]
       ],
       "layout": {
         "line-cap": "round",
