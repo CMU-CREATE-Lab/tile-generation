@@ -8,8 +8,26 @@
       }
    },
    "styles" : {
+      "dark-matter" : {
+         "style" : "dark-matter-gl-style-v1.3/style-local.json",
+         "tilejson" : {
+            "bounds" : [-9.408655, 49.00443, 2.25, 61.13564]
+         }
+      },
+      "dark-matter-cpb" : {
+         "style" : "dark-matter-cpb-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-9.408655, 49.00443, 2.25, 61.13564]
+         }
+      },
       "klokantech-basic" : {
          "style" : "klokantech-basic-gl-style-v1.3/style-local.json",
+         "tilejson" : {
+            "bounds" : [-9.408655, 49.00443, 2.25, 61.13564]
+         }
+      },
+      "klokantech-basic-cpb" : {
+         "style" : "klokantech-basic-cpb-gl-style/style-local.json",
          "tilejson" : {
             "bounds" : [-9.408655, 49.00443, 2.25, 61.13564]
          }
