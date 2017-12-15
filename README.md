@@ -75,6 +75,9 @@ I've already downloaded and included some styles in the project, but here's wher
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Positron v1.4<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/openmaptiles/positron-gl-style/releases
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dark Matter v1.3
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://github.com/openmaptiles/dark-matter-gl-style/releases
+
 I've also included some styles of my own based on some of the above.  
 
 ##### Config
