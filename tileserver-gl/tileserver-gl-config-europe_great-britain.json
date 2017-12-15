@@ -1,61 +1,41 @@
 {
-  "options": {
-    "paths": {
-      "root": "/usr/src/app/node_modules/tileserver-gl-styles",
-      "fonts": "/createlab/fonts",
-      "styles": "/createlab/styles",
-      "mbtiles": "/createlab/mbtiles"
-    }
-  },
-  "styles": {
-    "klokantech-basic": {
-      "style": "klokantech-basic-gl-style-v1.3/style-local.json",
-      "tilejson": {
-        "bounds": [
-          -9.408655,
-          49.00443,
-          2.25,
-          61.13564
-        ]
+   "options" : {
+      "paths" : {
+         "root" : "/usr/src/app/node_modules/tileserver-gl-styles",
+         "fonts" : "/createlab/fonts",
+         "styles" : "/createlab/styles",
+         "mbtiles" : "/createlab/mbtiles"
       }
-    },
-    "osm-bright": {
-      "style": "osm-bright-gl-style-v1.3/style-local.json",
-      "tilejson": {
-        "bounds": [
-          -9.408655,
-          49.00443,
-          2.25,
-          61.13564
-        ]
+   },
+   "styles" : {
+      "klokantech-basic" : {
+         "style" : "klokantech-basic-gl-style-v1.3/style-local.json",
+         "tilejson" : {
+            "bounds" : [-9.408655, 49.00443, 2.25, 61.13564]
+         }
+      },
+      "osm-bright" : {
+         "style" : "osm-bright-gl-style-v1.3/style-local.json",
+         "tilejson" : {
+            "bounds" : [-9.408655, 49.00443, 2.25, 61.13564]
+         }
+      },
+      "osm-bright-cpb" : {
+         "style" : "osm-bright-cpb-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-9.408655, 49.00443, 2.25, 61.13564]
+         }
+      },
+      "positron" : {
+         "style" : "positron-gl-style-v1.4/style-local.json",
+         "tilejson" : {
+            "bounds" : [-9.408655, 49.00443, 2.25, 61.13564]
+         }
       }
-    },
-    "osm-bright-cpb": {
-      "style": "osm-bright-cpb-gl-style/style-local.json",
-      "tilejson": {
-        "bounds": [
-          -9.408655,
-          49.00443,
-          2.25,
-          61.13564
-        ]
+   },
+   "data" : {
+      "v3" : {
+         "mbtiles" : "2017-07-03_europe_great-britain.mbtiles"
       }
-    },
-    "positron": {
-      "style": "positron-gl-style-v1.4/style-local.json",
-      "tilejson": {
-        "bounds": [
-          -9.408655,
-          49.00443,
-          2.25,
-          61.13564
-        ]
-      }
-    }
-  },
-  "data": {
-    "v3": {
-      "mbtiles": "2017-07-03_europe_great-britain.mbtiles"
-    }
-  }
+   }
 }

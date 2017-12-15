@@ -1,59 +1,59 @@
 {
-  "options": {
-    "paths": {
-      "root": "/usr/src/app/node_modules/tileserver-gl-styles",
-      "fonts": "/createlab/fonts",
-      "styles": "/createlab/styles",
-      "mbtiles": "/createlab/mbtiles"
-    }
-  },
-  "styles": {
-    "dark-matter": {
-      "style": "dark-matter-gl-style-v1.3/style-local.json",
-      "tilejson": {
-        "bounds": [-125.3321, 23.8991, -65.7421, 49.4325]
+   "options" : {
+      "paths" : {
+         "root" : "/usr/src/app/node_modules/tileserver-gl-styles",
+         "fonts" : "/createlab/fonts",
+         "styles" : "/createlab/styles",
+         "mbtiles" : "/createlab/mbtiles"
       }
-    },
-    "dark-matter-cpb": {
-      "style": "dark-matter-cpb-gl-style/style-local.json",
-      "tilejson": {
-        "bounds": [-125.3321, 23.8991, -65.7421, 49.4325]
+   },
+   "styles" : {
+      "dark-matter" : {
+         "style" : "dark-matter-gl-style-v1.3/style-local.json",
+         "tilejson" : {
+            "bounds" : [-125.3321, 23.8991, -65.7421, 49.4325]
+         }
+      },
+      "dark-matter-cpb" : {
+         "style" : "dark-matter-cpb-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-125.3321, 23.8991, -65.7421, 49.4325]
+         }
+      },
+      "klokantech-basic" : {
+         "style" : "klokantech-basic-gl-style-v1.3/style-local.json",
+         "tilejson" : {
+            "bounds" : [-125.3321, 23.8991, -65.7421, 49.4325]
+         }
+      },
+      "klokantech-basic-cpb" : {
+         "style" : "klokantech-basic-cpb-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-125.3321, 23.8991, -65.7421, 49.4325]
+         }
+      },
+      "osm-bright" : {
+         "style" : "osm-bright-gl-style-v1.3/style-local.json",
+         "tilejson" : {
+            "bounds" : [-125.3321, 23.8991, -65.7421, 49.4325]
+         }
+      },
+      "osm-bright-cpb" : {
+         "style" : "osm-bright-cpb-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-125.3321, 23.8991, -65.7421, 49.4325]
+         }
+      },
+      "positron" : {
+         "style" : "positron-gl-style-v1.4/style-local.json",
+         "tilejson" : {
+            "bounds" : [-125.3321, 23.8991, -65.7421, 49.4325]
+         }
       }
-    },
-    "klokantech-basic": {
-      "style": "klokantech-basic-gl-style-v1.3/style-local.json",
-      "tilejson": {
-        "bounds": [-125.3321, 23.8991, -65.7421, 49.4325]
+   },
+   "data" : {
+      "v3" : {
+         "mbtiles" : "2017-07-03_north-america_us.mbtiles"
       }
-    },
-    "klokantech-basic-cpb": {
-      "style": "klokantech-basic-cpb-gl-style/style-local.json",
-      "tilejson": {
-        "bounds": [-125.3321, 23.8991, -65.7421, 49.4325]
-      }
-    },
-    "osm-bright": {
-      "style": "osm-bright-gl-style-v1.3/style-local.json",
-      "tilejson": {
-        "bounds": [-125.3321, 23.8991, -65.7421, 49.4325]
-      }
-    },
-    "osm-bright-cpb": {
-      "style": "osm-bright-cpb-gl-style/style-local.json",
-      "tilejson": {
-        "bounds": [-125.3321, 23.8991, -65.7421, 49.4325]
-      }
-    },
-    "positron": {
-      "style": "positron-gl-style-v1.4/style-local.json",
-      "tilejson": {
-        "bounds": [-125.3321, 23.8991, -65.7421, 49.4325]
-      }
-    }
-  },
-  "data": {
-    "v3": {
-      "mbtiles": "2017-07-03_north-america_us.mbtiles"
-    }
-  }
+   }
 }
