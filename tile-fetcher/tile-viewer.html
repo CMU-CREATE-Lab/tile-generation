@@ -46,12 +46,12 @@
    });
 
    var tilesets = {
-      "osm-bright-cpb" : L.tileLayer('./tiles/osm-bright-cpb/{z}/{x}/{y}.png', { maxZoom : MAX_LEVEL }),
-      "osm-bright-cpb-2x" : L.tileLayer('./tiles/osm-bright-cpb-2x/{z}/{x}/{y}.png', { maxZoom : MAX_LEVEL }),
+      "klokantech-basic-cpb" : L.tileLayer('./tiles/klokantech-basic-cpb/{z}/{x}/{y}.png', { maxZoom : MAX_LEVEL }),
+      "klokantech-basic-cpb-2x" : L.tileLayer('./tiles/klokantech-basic-cpb-2x/{z}/{x}/{y}.png', { maxZoom : MAX_LEVEL }),
    };
 
    var map = L.map('map', {
-      layers : [tilesets['osm-bright-cpb-2x']]
+      layers : [tilesets['klokantech-basic-cpb-2x']]
    }).setView([38.933776, -97.734375], 4);
 
    map.options.minZoom = MIN_LEVEL;
