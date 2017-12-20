@@ -510,7 +510,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "rgb(27 ,27 ,29)",
@@ -561,7 +561,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "#181818",
@@ -609,7 +609,7 @@
       "layout": {
         "line-cap": "butt",
         "line-join": "miter",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "rgba(60,60,60,0.8)",
@@ -660,7 +660,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "hsl(0, 0%, 7%)",
@@ -708,7 +708,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "#2a2a2a",
@@ -751,7 +751,7 @@
       "layout": {
         "line-cap": "butt",
         "line-join": "miter",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "rgba(60,60,60,0.8)",
@@ -804,7 +804,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": {
@@ -864,7 +864,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "#181818",
@@ -1179,7 +1179,7 @@
           "Klokantech Noto Sans CJK Regular"
         ],
         "symbol-placement": "line",
-        "visibility": "visible",
+        "visibility": "none",
         "text-rotation-alignment": "map",
         "text-pitch-alignment": "viewport",
         "text-field": "{name:latin} {name:nonlatin}"
@@ -1231,7 +1231,7 @@
           "Klokantech Noto Sans CJK Regular"
         ],
         "symbol-placement": "line",
-        "visibility": "visible",
+        "visibility": "none",
         "text-rotation-alignment": "map",
         "text-pitch-alignment": "viewport",
         "text-field": "{name:en} {name:nonlatin}"
@@ -1277,7 +1277,7 @@
           "Klokantech Noto Sans CJK Regular"
         ],
         "symbol-placement": "line",
-        "visibility": "visible",
+        "visibility": "none",
         "text-rotation-alignment": "viewport",
         "text-pitch-alignment": "viewport",
         "text-field": "{ref}"
