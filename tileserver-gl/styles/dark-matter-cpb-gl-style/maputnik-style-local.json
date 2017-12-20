@@ -1174,7 +1174,7 @@
       "layout": {
         "text-size": 10,
         "text-max-angle": 30,
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "symbol-spacing": 350,
         "text-font": [
           "Metropolis Regular",
@@ -1226,7 +1226,7 @@
       "layout": {
         "text-size": 10,
         "text-max-angle": 30,
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "symbol-spacing": 350,
         "text-font": [
           "Metropolis Regular",
@@ -2240,7 +2240,7 @@
           "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "text-size": 10
       },
       "paint": {
@@ -2284,7 +2284,7 @@
           "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "text-size": 10
       },
       "paint": {
@@ -2332,7 +2332,7 @@
           "Klokantech Noto Sans Italic",
           "Klokantech Noto Sans CJK Regular"
         ],
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "text-size": {
           "base": 1,
           "stops": [
@@ -2391,7 +2391,7 @@
           "Klokantech Noto Sans Italic",
           "Klokantech Noto Sans CJK Regular"
         ],
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "text-size": {
           "base": 1,
           "stops": [
@@ -2455,7 +2455,7 @@
           "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "text-size": {
           "base": 1,
           "stops": [
@@ -2519,7 +2519,7 @@
           "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "text-size": {
           "base": 1,
           "stops": [
@@ -2583,7 +2583,7 @@
           "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "text-size": {
           "base": 1.4,
           "stops": [
@@ -2652,7 +2652,7 @@
           "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
-        "text-transform": "uppercase",
+        "text-transform": "none",
         "text-size": {
           "base": 1.4,
           "stops": [
