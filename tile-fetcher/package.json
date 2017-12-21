@@ -9,6 +9,7 @@
   "author": "Chris Bartley <bartley@cmu.edu>",
   "license": "ISC",
   "dependencies": {
+    "commander": "^2.12.2",
     "mkdirp": "^0.5.1",
     "nimble": "0.0.2",
     "superagent-ls": "^1.4.0"
