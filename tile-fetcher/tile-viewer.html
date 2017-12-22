@@ -22,6 +22,8 @@
          position: absolute;
          right: 10px;
          top: 10px;
+         background-color: rgba(255,255,255,0.5);
+         padding: 0 2px;
       }
    </style>
    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
@@ -35,7 +37,7 @@
 
 <script type="text/javascript">
    var MIN_LEVEL = 0;
-   var MAX_LEVEL = 10;
+   var MAX_LEVEL = 12;
 
    function updateZoomLevel() {
       $("#zoom_level").html("Level " + map.getZoom())
@@ -48,11 +50,13 @@
    var tilesets = {
       "klokantech-basic-cpb" : L.tileLayer('./tiles/klokantech-basic-cpb/{z}/{x}/{y}.png', { maxZoom : MAX_LEVEL }),
       "klokantech-basic-cpb-2x" : L.tileLayer('./tiles/klokantech-basic-cpb-2x/{z}/{x}/{y}.png', { maxZoom : MAX_LEVEL }),
+      "dark-matter-cpb" : L.tileLayer('./tiles/dark-matter-cpb/{z}/{x}/{y}.png', { maxZoom : MAX_LEVEL }),
+      "dark-matter-cpb-2x" : L.tileLayer('./tiles/dark-matter-cpb-2x/{z}/{x}/{y}.png', { maxZoom : MAX_LEVEL }),
    };
 
    var map = L.map('map', {
       layers : [tilesets['klokantech-basic-cpb']]
-   }).setView([38.933776, -97.734375], 4);
+   }).setView([0,0], 2);
 
    map.options.minZoom = MIN_LEVEL;
    map.options.maxZoom = MAX_LEVEL;
