@@ -15,6 +15,15 @@ function lat2tile(lat, zoom) {
 
 var TileFetcher = function(config) {
 
+   // make sure these are the correct data types
+   config.northLat = parseFloat(config.northLat);
+   config.westLong = parseFloat(config.westLong);
+   config.southLat = parseFloat(config.southLat);
+   config.eastLong = parseFloat(config.eastLong);
+   config.zoomLevel = parseInt(config.zoomLevel);
+   config.numTileFetchers = Math.max(parseInt(config.numTileFetchers), 1);
+   config.port = parseInt(config.numTileFetchers);
+
    // based off of code from http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames#ECMAScript_.28JavaScript.2FActionScript.2C_etc..29
    var yMin = lat2tile(config.northLat, config.zoomLevel);
    var xMin = lng2tile(config.westLong, config.zoomLevel);
@@ -33,11 +42,12 @@ var TileFetcher = function(config) {
    var zoomLevelStr = config.zoomLevel.toString();
    var tileDirectory = path.resolve(path.join(config.tileDirectory, '.'));
 
-   // console.log("x:            [" + xMin + ", " + xMax + "]");
-   // console.log("y:            [" + yMin + ", " + yMax + "]");
-   // console.log("numTilesWide: " + numTilesWide);
-   // console.log("numTilesHigh: " + numTilesHigh);
-   console.log("Generating " + totalTiles + " tiles...");
+   console.log("----------------------------------------------------------------------------------------");
+   console.log("Level " + config.zoomLevel + ": Generating " + totalTiles + " tiles (" + numTilesWide + " x " + numTilesHigh + ")...");
+   // console.log("   Longitude:    [" + config.westLong + ", " + config.eastLong + "]");
+   // console.log("   Latitude:     [" + config.southLat + ", " + config.northLat + "]");
+   // console.log("   x:            [" + xMin + ", " + xMax + "]");
+   // console.log("   y:            [" + yMin + ", " + yMax + "]");
 
    var getTileCoords = function(i) {
       // return them as strings
@@ -65,17 +75,21 @@ var TileFetcher = function(config) {
                   }
                   else {
                      if (res.body) {
-                        var fileDir = path.resolve(path.join(tileDirectory, '/' + zoomLevelStr + '/' + tileCoords.x));
-                        mkdirp.sync(fileDir);
-                        fs.writeFileSync(path.join(fileDir, '.', tileCoords.y + ".png"), res.body);
-                        // console.log("I am [" + fetcherIndex + "] and got index: " + index + " --> " + JSON.stringify(tileCoords) + " --> " + url);
-                        // console.log("Wrote to dir [" + fileDir + "]");
+                        if (res.status >= 200 && res.status < 300) {
+                           var fileDir = path.resolve(path.join(tileDirectory, '/' + zoomLevelStr + '/' + tileCoords.x));
+                           mkdirp.sync(fileDir);
+                           fs.writeFileSync(path.join(fileDir, '.', tileCoords.y + ".png"), res.body);
+                        }
+                        else {
+                           console.log("   WARN: ignoring respose with HTTP " + res.status + " for " + url);
+                        }
                      }
                      else {
-                        console.log("WARN: empty response for " + url);
+                        console.log("   WARN: empty response for " + url);
                      }
-                     if (totalTiles > numPercentageChunks && index !== 0 && index % numTilesPerPercentageChunk === 0) {
-                        console.log(Math.round(index / totalTiles * 100) + "% done");
+
+                     if (totalTiles > numPercentageChunks && index !== 0 && (index % numTilesPerPercentageChunk === 0)) {
+                        console.log("   " + Math.round(index / totalTiles * 100) + "% done");
                      }
 
                      setTimeout(function() {
@@ -95,7 +109,7 @@ var TileFetcher = function(config) {
       }
    };
 
-   this.run = function() {
+   this.run = function(callback) {
       if (isRunning) {
          console.log("ERROR: fetcher is already running, ignoring this run request");
       }
@@ -111,14 +125,8 @@ var TileFetcher = function(config) {
 
          // run fetchers
          flow.parallel(tileFetchers, function(err) {
-            var elapsedMillis = Date.now() - startTimeMillis;
-            if (err) {
-               console.log("All done, but with an error: " + err);
-            }
-            else {
-               console.log("All done! Generation took a total " + (elapsedMillis / 1000).toFixed(2) + " seconds (~" + (elapsedMillis / totalTiles).toFixed(2) + " milliseconds per tile)");
-            }
             isRunning = false;
+            callback(err, totalTiles, Date.now() - startTimeMillis)
          });
       }
    };
