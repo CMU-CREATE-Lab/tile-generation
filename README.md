@@ -183,9 +183,9 @@ Here's what to do to edit a style:
 2. Copy style changes to the tileserver-gl version of the style. In this repo, that's the `style-local.json` file.
 3. Run tileserver-gl, and verify that your style looks good with the vector map data you have.
 
-### Generating Tiles
+### Generating and Fetching Tiles
 
-At long last, we can finally generate the tiles...
+At long last, we can finally generate and fetch the tiles...
 
 It's simple enough to just write a script to fetch all tiles for a given level and lat/long bounding box directly from Tileserver GL, so that's what I did.  It's a Node.js script in the `tile-fetcher` directory. I used Node.js 8.9.2, but it might work for other versions.  
 
@@ -205,31 +205,33 @@ You specify the bounding box, levels, style, etc. through command line arguments
 | Option | Description |
 |--------|-------------|
 |`--style  <Style name>`|The map style name, as it appears in the Tileserver GL tile URL, e.g. `klokantech-basic-cpb`.|
-|`--level  <Zoom level(s)>`|Zoom level(s) to generate.  Must be in the range [0,14]. Specify multiple levels as a comma-delimted list, a range, or a combination of the two.|
+|`--level  <Zoom level(s)>`|Zoom level(s) to fetch.  Must be in the range [0,14]. Specify multiple levels as a comma-delimted list, a range, or a combination of the two.|
 |`--dir    <Output directory> `|Directory in which tiles will be saved.|
 
 Here are the optional options:
 
 | Option | Description |
 |--------|-------------|
-|`--west   <West longitude>   `|The west longitude of the bounding box to generate. Defaults to `-180` if unspecified.|
-|`--east   <East longitude>   `|The east longitude of the bounding box to generate. Defaults to `179.9999999999999` if unspecified.|
-|`--north  <North latitude>   `|The north latitude of the bounding box to generate. Defaults to `85.0511` if unspecified.|
-|`--south  <South latitude>   `|The south latitude of the bounding box to generate. Defaults to `-85.0511` if unspecified.|
+|`--west   <West longitude>   `|The west longitude of the bounding box to fetch. Defaults to `-180` if unspecified.|
+|`--east   <East longitude>   `|The east longitude of the bounding box to fetch. Defaults to `179.9999999999999` if unspecified.|
+|`--north  <North latitude>   `|The north latitude of the bounding box to fetch. Defaults to `85.0511` if unspecified.|
+|`--south  <South latitude>   `|The south latitude of the bounding box to fetch. Defaults to `-85.0511` if unspecified.|
 |`--n      <Num tile fetchers>`|Number of tile fetchers to use. Defaults to `6` if unspecified.|
 |`--host   <Tile server host> `|Host name of the tile server. Defaults to `localhost` if unspecified.|
 |`--port   <Tile server port> `|Port number of the tile server. Defaults to `8080` if unspecified.|
-|`--retina                    `|Generate retina tiles|
+|`--start  <x,y>              `|Start at the tile specified by the given x and y. This option is ignored if more than one level is specified.|
+|`--retina                    `|Fetch retina tiles|
+|`--dry-run                   `|Don't actually fetch tiles, just compute what tiles would be fetched and print the results.|
 
 #### Running
 
-Here's an example for generating levels 0-8 for the entire Earth using the `klokantech-basic-cpb` style (this is assuming you have Tileserver GL running with the `tileserver-gl-config-planet.json` and listening on port 8080, as shown above):
+Here's an example for generating and fetching levels 0-8 for the entire Earth using the `klokantech-basic-cpb` style (this is assuming you have Tileserver GL running with the `tileserver-gl-config-planet.json` and listening on port 8080, as shown above):
 
 ```
 $ node index.js --style klokantech-basic-cpb  --dir ./tiles/klokantech-basic-cpb --level 0-8
 ```
 
-This will generate retina tiles for levels 1-4 and levels 7 and 9 for the United States using the `dark-matter-cpb` style, assuming Tileserver GL is listening on port 8081:
+This will fetch retina tiles for levels 1-4 and levels 7 and 9 for the United States using the `dark-matter-cpb` style, assuming Tileserver GL is listening on port 8081:
 
 ```
 $ node index.js --style dark-matter-cpb  --dir ./tiles/dark-matter-cpb@2x --level 1-4,7,9 --port 8081 --west -125.3321 --east -65.7421 --south 23.8991 --north 49.4325 --retina
@@ -237,6 +239,16 @@ $ node index.js --style dark-matter-cpb  --dir ./tiles/dark-matter-cpb@2x --leve
 
 For zoom levels having more than 20 tiles, you'll get a progress report approximately every 5%.
 
+Since Tileserver GL seems to crash on me fairly often when I'm running multiple instances, it's handy to be able to start tile fetches somewhere in the middle of a level so I can resume where it crashed. You can optionally specify the starting tile by providing the `--start` option, e.g. to start at tile with x=10 and y=32:
+
+```
+$ node index.js --style klokantech-basic-cpb  --dir ./tiles/klokantech-basic-cpb --level 6 --start 10,32
+```
+
+The above command would fetch only 2038 of the 4096 tiles in level 6.
+
+Note that the starting tile option is only honored when requesting a single level.
+
 #### Viewing Tiles
 
-Once you have some tiles generated, you can preview them using the `tile-viewer.html` file (also in the `tile-fetcher` directory), which you may need to edit according to where you saved your tiles.
+Once you have some tiles generated and fetched, you can preview them using the `tile-viewer.html` file (also in the `tile-fetcher` directory), which you may need to edit according to where you saved your tiles.

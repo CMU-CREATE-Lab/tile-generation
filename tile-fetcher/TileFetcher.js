@@ -14,7 +14,6 @@ function lat2tile(lat, zoom) {
 }
 
 var TileFetcher = function(config) {
-
    // make sure these are the correct data types
    config.northLat = parseFloat(config.northLat);
    config.westLong = parseFloat(config.westLong);
@@ -33,7 +32,6 @@ var TileFetcher = function(config) {
    var numTilesHigh = Math.abs(yMin - yMax) + 1;
    var totalTiles = numTilesWide * numTilesHigh;
    var numPercentageChunks = 20;
-   var numTilesPerPercentageChunk = Math.floor(totalTiles / numPercentageChunks);
 
    var isRunning = false;
    var startTimeMillis = 0;
@@ -42,12 +40,38 @@ var TileFetcher = function(config) {
    var zoomLevelStr = config.zoomLevel.toString();
    var tileDirectory = path.resolve(path.join(config.tileDirectory, '.'));
 
+   // now see if the starting tile was specified and is valid
+   var getStart = function(configName, min, max) {
+      var val = min;
+      if (configName in config && config[configName] !== 'undefined') {
+         var intVal = parseInt(config[configName]);
+         if (!isNaN(intVal)) {
+            val = Math.min(Math.max(intVal, min), max);
+         }
+      }
+
+      return val;
+   };
+   var startX = getStart('startX', xMin, xMax);
+   var startY = getStart('startY', yMin, yMax);
+
+   // if the starting tile is anything other than (xMin,yMin), then we need to adjust the starting tileIndex
+   var startingTileIndex = 0;
+   if (startX > xMin || startY > yMin) {
+      startingTileIndex = numTilesWide * (startY - yMin) + (startX - xMin);
+   }
+   var tileIndex = startingTileIndex;
+   var numTilesToFetch = totalTiles - tileIndex;
+   var numTilesPerPercentageChunk = Math.floor(numTilesToFetch / numPercentageChunks);
+
    console.log("----------------------------------------------------------------------------------------");
-   console.log("Level " + config.zoomLevel + ": Generating " + totalTiles + " tiles (" + numTilesWide + " x " + numTilesHigh + ")...");
-   // console.log("   Longitude:    [" + config.westLong + ", " + config.eastLong + "]");
-   // console.log("   Latitude:     [" + config.southLat + ", " + config.northLat + "]");
-   // console.log("   x:            [" + xMin + ", " + xMax + "]");
-   // console.log("   y:            [" + yMin + ", " + yMax + "]");
+   console.log("Level " + config.zoomLevel + ": Fetching " + (numTilesToFetch) + " of " + totalTiles + " tiles (" + numTilesWide + " x " + numTilesHigh + ")...");
+   console.log("   Longitude:    [" + config.westLong + ", " + config.eastLong + "]");
+   console.log("   Latitude:     [" + config.southLat + ", " + config.northLat + "]");
+   console.log("   x range:      [" + xMin + ", " + xMax + "]");
+   console.log("   y range:      [" + yMin + ", " + yMax + "]");
+   console.log("   Start tile:   (" + startX + ", " + startY + ")");
+   // console.log("   Tile Index:   " + tileIndex);
 
    var getTileCoords = function(i) {
       // return them as strings
@@ -58,7 +82,7 @@ var TileFetcher = function(config) {
    };
 
    var getNextIndex = function() {
-      return numFetched >= totalTiles ? -1 : numFetched++;
+      return tileIndex >= totalTiles ? -1 : tileIndex++;
    };
 
    var fetchTile = function(fetcherIndex, done) {
@@ -79,6 +103,7 @@ var TileFetcher = function(config) {
                            var fileDir = path.resolve(path.join(tileDirectory, '/' + zoomLevelStr + '/' + tileCoords.x));
                            mkdirp.sync(fileDir);
                            fs.writeFileSync(path.join(fileDir, '.', tileCoords.y + ".png"), res.body);
+                           numFetched++;
                         }
                         else {
                            console.log("   WARN: ignoring respose with HTTP " + res.status + " for " + url);
@@ -88,8 +113,8 @@ var TileFetcher = function(config) {
                         console.log("   WARN: empty response for " + url);
                      }
 
-                     if (totalTiles > numPercentageChunks && index !== 0 && (index % numTilesPerPercentageChunk === 0)) {
-                        console.log("   " + Math.round(index / totalTiles * 100) + "% done");
+                     if (numTilesToFetch >= numPercentageChunks && numFetched !== 0 && (numFetched % numTilesPerPercentageChunk === 0)) {
+                        console.log("   " + Math.round(numFetched / numTilesToFetch * 100) + "% done");
                      }
 
                      setTimeout(function() {
@@ -116,6 +141,7 @@ var TileFetcher = function(config) {
       else {
          isRunning = true;
          startTimeMillis = Date.now();
+         tileIndex = startingTileIndex;
          numFetched = 0;
 
          // create fetchers
@@ -126,11 +152,16 @@ var TileFetcher = function(config) {
          // run fetchers
          flow.parallel(tileFetchers, function(err) {
             isRunning = false;
-            callback(err, totalTiles, Date.now() - startTimeMillis)
+            callback(err, numFetched, Date.now() - startTimeMillis);
          });
       }
    };
 
+   this.dryRun = function(callback) {
+      setTimeout(function() {
+         callback(null, numFetched, 0);
+      }, 0);
+   };
 };
 
 module.exports = TileFetcher;

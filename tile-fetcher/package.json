@@ -1,6 +1,6 @@
 {
   "name": "tile-fetcher",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Fetches and saves raster tiles from Tileserver GL",
   "main": "index.js",
   "scripts": {

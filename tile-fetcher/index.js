@@ -16,16 +16,18 @@ const DEFAULT_SOUTH = -85.0511;
 programOptions
       .version(packageJson.version)
       .option('--style  <Style name>', "Required. The map style name, as it appears in the Tileserver GL tile URL.")
-      .option('--level  <Zoom level(s)>', "Required. Zoom level(s) to generate.  Must be in the range [" + MIN_LEVEL + "," + MAX_LEVEL + "]. Specify multiple levels as a comma-delimted list, a range, or a combination of the two.")
+      .option('--level  <Zoom level(s)>', "Required. Zoom level(s) to fetch.  Must be in the range [" + MIN_LEVEL + "," + MAX_LEVEL + "]. Specify multiple levels as a comma-delimted list, a range, or a combination of the two.")
       .option('--dir    <Output directory>', "Required. Directory in which tiles will be saved.")
-      .option('--west   <West longitude>', "The west longitude of the bounding box to generate. Defaults to " + DEFAULT_WEST + " if unspecified.")
-      .option('--east   <East longitude>', "The east longitude of the bounding box to generate. Defaults to " + DEFAULT_EAST + " if unspecified.")
-      .option('--north  <North latitude>', "The north latitude of the bounding box to generate. Defaults to " + DEFAULT_NORTH + " if unspecified.")
-      .option('--south  <South latitude>', "The south latitude of the bounding box to generate. Defaults to " + DEFAULT_SOUTH + " if unspecified.")
+      .option('--west   <West longitude>', "The west longitude of the bounding box to fetch. Defaults to " + DEFAULT_WEST + " if unspecified.")
+      .option('--east   <East longitude>', "The east longitude of the bounding box to fetch. Defaults to " + DEFAULT_EAST + " if unspecified.")
+      .option('--north  <North latitude>', "The north latitude of the bounding box to fetch. Defaults to " + DEFAULT_NORTH + " if unspecified.")
+      .option('--south  <South latitude>', "The south latitude of the bounding box to fetch. Defaults to " + DEFAULT_SOUTH + " if unspecified.")
       .option('--n      <Num tile fetchers>', "Number of tile fetchers to use. Defaults to " + DEFAULT_NUM_FETCHERS + " if unspecified.")
       .option('--host   <Tile server host>', "Host name of the tile server. Defaults to " + DEFAULT_HOST + " if unspecified.")
       .option('--port   <Tile server port>', "Port number of the tile server. Defaults to " + DEFAULT_PORT + " if unspecified.")
-      .option('--retina', "Generate retina tiles")
+      .option('--start   <x,y>', "Start at the tile specified by the given x and y. This option is ignored if more than one level is specified.")
+      .option('--retina', "Fetch retina tiles")
+      .option('--dry-run', "Don't actually fetch tiles, just compute what tiles would be fetched and print the results.")
       .parse(process.argv);
 
 var isOptionDefined = function(optionName) {
@@ -36,20 +38,25 @@ var getOptionalValue = function(optionName, defaultValue) {
    return isOptionDefined(optionName) ? programOptions[optionName] : defaultValue;
 };
 
-var generateTiles = function(styleName,
-                             levels,
-                             outputDir,
-                             west,
-                             east,
-                             north,
-                             south,
-                             numFetchers,
-                             host,
-                             port,
-                             isRetina) {
+var fetchTiles = function(styleName,
+                          levels,
+                          outputDir,
+                          west,
+                          east,
+                          north,
+                          south,
+                          numFetchers,
+                          host,
+                          port,
+                          isRetina,
+                          startingTile,
+                          isDryRun) {
 
    var hostAndPort = host + ":" + port;
 
+   var runMethod = isDryRun ? 'dryRun' : 'run';
+
+   console.log("----------------------------------------------------------------------------------------");
    console.log("Style:          " + styleName);
    console.log("Level(s):       " + levels);
    console.log("Output dir:     " + outputDir);
@@ -58,6 +65,8 @@ var generateTiles = function(styleName,
    console.log("Num fetchers:   " + numFetchers);
    console.log("Host and port:  " + hostAndPort);
    console.log("Retina tiles?   " + isRetina);
+   console.log("Starting tile:  " + JSON.stringify(startingTile));
+   console.log("Is Dry Run?     " + isDryRun);
 
    var totalElapsedMillis = 0;
 
@@ -78,15 +87,17 @@ var generateTiles = function(styleName,
                         return "http://" + hostAndPort + "/styles/" + styleName + "/" + z + "/" + x + "/" + y + (isRetina ? "@2x" : "") + ".png";
                      };
                   })(),
-                  tileDirectory : outputDir
+                  tileDirectory : outputDir,
+                  startX : startingTile ? startingTile.x : null,
+                  startY : startingTile ? startingTile.y : null
                }
-         ).run(function(err, totalTiles, elapsedMillis) {
+         )[runMethod](function(err, numFetched, elapsedMillis) {
             totalElapsedMillis += elapsedMillis;
             if (err) {
-               console.log("Level " + level + " done, but with an error: " + err);
+               console.log("Level " + level + " done, " + numFetched + " tile(s) fetched, but with an error: " + err);
             }
             else {
-               console.log("Level " + level + " done! Generation took " + (elapsedMillis / 1000).toFixed(2) + " seconds (~" + (elapsedMillis / totalTiles).toFixed(2) + " milliseconds per tile)");
+               console.log("Level " + level + " done! Fetched " + numFetched + " tile" + (numFetched === 1 ? "" : "s") + " in " + (elapsedMillis / 1000).toFixed(2) + " seconds (~" + (numFetched === 0 ? 0 : (elapsedMillis / numFetched).toFixed(2)) + " milliseconds per tile)");
             }
             done(err);
          });
@@ -104,6 +115,9 @@ var generateTiles = function(styleName,
       }
    });
 };
+
+console.log("----------------------------------------------------------------------------------------");
+console.log("Validating options...");
 
 var areAllRequiredOptionsSpecified = true;
 
@@ -128,7 +142,7 @@ if (areAllRequiredOptionsSpecified) {
    var outputDir = programOptions['dir'];
 
    // process the specified level(s): allow combo of commas and ranges, storing in a set to remove dupes, and then
-   // sorting the set's keys at the end to generate the levels in order.
+   // sorting the set's keys at the end to fetch the levels in order.
    var levelsSet = {};
    var cleanLevel = function(l) {
       var level = parseInt(l);
@@ -174,7 +188,33 @@ if (areAllRequiredOptionsSpecified) {
       return a - b;
    });
 
-   generateTiles(
+   var startingTile = null;
+   if (isOptionDefined('start')) {
+      if (levels.length > 1) {
+         console.log("WARN: starting position ignored because more than 1 level is requested.");
+      }
+      else {
+         var xAndY = programOptions['start'].split(',');
+         if (xAndY.length === 2) {
+            var x = parseInt(xAndY[0]);
+            var y = parseInt(xAndY[1]);
+            if (isNaN(x) || isNaN(y) || x < 0 || y < 0) {
+               console.log("ERROR: invalid starting tile specified, must be of the form x,y, where x and y are both non-negative integers. Ignoring.");
+            }
+            else {
+               startingTile = { x : x, y : y };
+            }
+         }
+         else {
+            console.log("ERROR: invalid starting tile specified, must be of the form x,y. Ignoring.");
+         }
+      }
+   }
+   else {
+      startingTile = null;
+   }
+
+   fetchTiles(
          styleName,
          levels,
          outputDir,
@@ -185,5 +225,8 @@ if (areAllRequiredOptionsSpecified) {
          getOptionalValue('n', DEFAULT_NUM_FETCHERS),
          getOptionalValue('host', DEFAULT_HOST),
          getOptionalValue('port', DEFAULT_PORT),
-         'retina' in programOptions);
+         'retina' in programOptions,
+         startingTile,
+         isOptionDefined('dryRun')
+   );
 }
