@@ -31,11 +31,11 @@
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "http://localhost:8080/data/v3.json"
+      "url": "https://free.tilehosting.com/data/v3.json?key={key}"
     }
   },
-  "sprite": "http://localhost:8080/styles/dark-matter-cpb/sprite",
-  "glyphs": "http://localhost:8080/fonts/{fontstack}/{range}.pbf",
+  "sprite": "https://openmaptiles.github.io/dark-matter-gl-style/sprite",
+  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {
       "id": "background",
@@ -2328,8 +2328,8 @@
         "visibility": "visible",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Metropolis Light Italic",
-          "Klokantech Noto Sans Italic",
+          "Metropolis Regular",
+          "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
         "text-transform": "none",
@@ -2337,12 +2337,12 @@
           "base": 1,
           "stops": [
             [
-              0,
-              9
+              2,
+              11
             ],
             [
-              1,
-              11
+              5,
+              17
             ]
           ]
         }
@@ -2387,8 +2387,8 @@
         "visibility": "visible",
         "text-field": "{name:en}\n{name:nonlatin}",
         "text-font": [
-          "Metropolis Light Italic",
-          "Klokantech Noto Sans Italic",
+          "Metropolis Regular",
+          "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
         "text-transform": "none",
@@ -2396,12 +2396,12 @@
           "base": 1,
           "stops": [
             [
-              0,
-              9
+              2,
+              11
             ],
             [
-              1,
-              11
+              5,
+              17
             ]
           ]
         }
@@ -2460,12 +2460,12 @@
           "base": 1,
           "stops": [
             [
-              0,
-              10
+              2,
+              11
             ],
             [
-              6,
-              12
+              5,
+              17
             ]
           ]
         }
@@ -2524,12 +2524,12 @@
           "base": 1,
           "stops": [
             [
-              0,
-              10
+              2,
+              11
             ],
             [
-              6,
-              12
+              5,
+              17
             ]
           ]
         }
@@ -2589,15 +2589,11 @@
           "stops": [
             [
               0,
-              10
-            ],
-            [
-              3,
-              12
+              11
             ],
             [
               4,
-              14
+              17
             ]
           ]
         },
@@ -2658,15 +2654,11 @@
           "stops": [
             [
               0,
-              10
-            ],
-            [
-              3,
-              12
+              11
             ],
             [
               4,
-              14
+              17
             ]
           ]
         },

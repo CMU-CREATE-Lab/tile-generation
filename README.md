@@ -124,18 +124,37 @@ I've included the binary in this project, so if you're on a Mac you shouldn't ne
 
 #### Slight Wrinkle
 
-The only wrinkle is that the style file has URLs for where it can find vector map data, sprites, and fonts ("glyphs").  I have one for Maputnik, and a slightly different one for Tileserver GL.  If you compare `tileserver-gl/styles/osm-bright-cpb-gl-style/maputnik-style-local.json` and `tileserver-gl/styles/osm-bright-cpb-gl-style/style-local.json`, you'll see those three fields differ as shown below:
+The only wrinkle is that the style file has URLs for where it can find vector map data, sprites, and fonts ("glyphs").  I have two for Maputnik, and a slightly different one for Tileserver GL.  If you compare these files...
+
+```
+tileserver-gl/styles/osm-bright-cpb-gl-style/maputnik-style-local.json
+tileserver-gl/styles/osm-bright-cpb-gl-style/maputnik-style-remote.json
+tileserver-gl/styles/osm-bright-cpb-gl-style/style-local.json
+```
+...you'll see those three fields differ as shown below:
 
 **maputnik-style-local.json**
 ```json
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "https://free.tilehosting.com/data/v3.json?key=RiS4gsgZPZqeeMlIyxFo"
+      "url": "http://localhost:8080/data/v3.json"
+    }
+  },
+  "sprite": "http://localhost:8080/styles/osm-bright-cpb/sprite",
+  "glyphs": "http://localhost:8080/fonts/{fontstack}/{range}.pbf",
+``` 
+
+**maputnik-style-remote.json**
+```json
+  "sources": {
+    "openmaptiles": {
+      "type": "vector",
+      "url": "https://free.tilehosting.com/data/v3.json?key={key}"
     }
   },
   "sprite": "https://openmaptiles.github.io/osm-bright-gl-style/sprite",
-  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key=RiS4gsgZPZqeeMlIyxFo",
+  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
 ``` 
 
 **style-local.json**
@@ -150,7 +169,11 @@ The only wrinkle is that the style file has URLs for where it can find vector ma
   "glyphs": "{fontstack}/{range}.pbf",
 ``` 
 
-So, basically, you'll want to run Maputnik so that it's editing the `maputnik-style-local.json` file, because it'll be getting map data, sprites, and fonts for the whole earth from the cloud.  That is, you won't need local copies just to edit the style.  Once you get the style working how you want it, you can apply those changes to `style-local.json` and then fire up Tileserver GL to apply the style to your local vector map data and check your work.
+The difference between the two maputnik style files is that `maputnik-style-local.json` is configured to get all vector data tiles, sprites, and fonts locally, from Tileserver GL.  And thus you'll need to have Tileserver GL running for Maputnik to be able to work and edit that style file, and you'll also need the vector map data to be local.  The `maputnik-style-remote.json` file is configured to pull all vector data tiles, sprites, and fonts from the cloud.  I prefer the local one since I like the style I'm editing to be using the exact same assets that the tile generation will be using.
+
+Finally, the `style-local.json` is just for Tileserver GL (and is referenced in the various `tileserver-gl-config-*.json` files).
+
+The most important thing to remember is that, once you get the style working how you want it--regardless of whether you're using the local or remote maputnik style file--you *must* apply those changes to the other two style files.  And be sure to also fire up Tileserver GL to check your work.  I've seen cases where Maputnik and Tileserver GL interpret the style JSON differently.
 
 #### Running Maputnik
 
