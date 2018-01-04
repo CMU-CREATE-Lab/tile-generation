@@ -2328,8 +2328,8 @@
         "visibility": "visible",
         "text-field": "{name:latin}\n{name:nonlatin}",
         "text-font": [
-          "Metropolis Light Italic",
-          "Klokantech Noto Sans Italic",
+          "Metropolis Regular",
+          "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
         "text-transform": "none",
@@ -2387,8 +2387,8 @@
         "visibility": "visible",
         "text-field": "{name:en}\n{name:nonlatin}",
         "text-font": [
-          "Metropolis Light Italic",
-          "Klokantech Noto Sans Italic",
+          "Metropolis Regular",
+          "Klokantech Noto Sans Regular",
           "Klokantech Noto Sans CJK Regular"
         ],
         "text-transform": "none",
