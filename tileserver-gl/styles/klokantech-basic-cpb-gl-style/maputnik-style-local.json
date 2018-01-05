@@ -1366,7 +1366,8 @@
             ]
           ]
         },
-        "text-rotation-alignment": "map"
+        "text-rotation-alignment": "map",
+        "visibility": "none"
       },
       "paint": {
         "text-color": "#000",
@@ -1413,7 +1414,8 @@
             ]
           ]
         },
-        "text-rotation-alignment": "map"
+        "text-rotation-alignment": "map",
+        "visibility": "none"
       },
       "paint": {
         "text-color": "#000",
