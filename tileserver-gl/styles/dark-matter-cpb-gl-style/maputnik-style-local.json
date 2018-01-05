@@ -1441,7 +1441,7 @@
           "Klokantech Noto Sans CJK Regular"
         ],
         "text-justify": "center",
-        "visibility": "visible",
+        "visibility": "none",
         "text-offset": [
           0.5,
           0
@@ -1493,7 +1493,7 @@
           "Klokantech Noto Sans CJK Regular"
         ],
         "text-justify": "center",
-        "visibility": "visible",
+        "visibility": "none",
         "text-offset": [
           0.5,
           0
@@ -1543,7 +1543,7 @@
           "Klokantech Noto Sans CJK Regular"
         ],
         "text-justify": "center",
-        "visibility": "visible",
+        "visibility": "none",
         "text-offset": [
           0.5,
           0
@@ -1593,7 +1593,7 @@
           "Klokantech Noto Sans CJK Regular"
         ],
         "text-justify": "center",
-        "visibility": "visible",
+        "visibility": "none",
         "text-offset": [
           0.5,
           0
@@ -1643,7 +1643,7 @@
           "Klokantech Noto Sans CJK Regular"
         ],
         "text-justify": "left",
-        "visibility": "visible",
+        "visibility": "none",
         "text-offset": [
           0.5,
           0.2
@@ -1739,7 +1739,18 @@
         ]
       ],
       "layout": {
-        "text-size": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              10
+            ],
+            [
+              8,
+              11
+            ]
+          ]
+        },
         "icon-image": {
           "base": 1,
           "stops": [
@@ -1787,7 +1798,8 @@
         "text-halo-width": 1,
         "text-halo-blur": 1,
         "icon-opacity": 0.7
-      }
+      },
+      "minzoom": 8
     },
     {
       "id": "place_town-en",
@@ -1816,7 +1828,18 @@
         ]
       ],
       "layout": {
-        "text-size": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              10
+            ],
+            [
+              8,
+              11
+            ]
+          ]
+        },
         "icon-image": {
           "base": 1,
           "stops": [
@@ -1864,7 +1887,8 @@
         "text-halo-width": 1,
         "text-halo-blur": 1,
         "icon-opacity": 0.7
-      }
+      },
+      "minzoom": 8
     },
     {
       "id": "place_city",
@@ -1883,17 +1907,14 @@
           "Point"
         ],
         [
-          "any",
-          [
-            "==",
-            "class",
-            "city"
-          ],
-          [
-            ">",
-            "rank",
-            2
-          ]
+          "==",
+          "class",
+          "city"
+        ],
+        [
+          ">",
+          "rank",
+          3
         ],
         [
           "!has",
@@ -1901,7 +1922,22 @@
         ]
       ],
       "layout": {
-        "text-size": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              10
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              8,
+              13
+            ]
+          ]
+        },
         "icon-image": {
           "base": 1,
           "stops": [
@@ -1949,7 +1985,8 @@
         "text-halo-width": 1,
         "text-halo-blur": 1,
         "icon-opacity": 0.7
-      }
+      },
+      "minzoom": 5
     },
     {
       "id": "place_city-en",
@@ -1968,17 +2005,14 @@
           "Point"
         ],
         [
-          "any",
-          [
-            "==",
-            "class",
-            "city"
-          ],
-          [
-            ">",
-            "rank",
-            2
-          ]
+          "==",
+          "class",
+          "city"
+        ],
+        [
+          ">",
+          "rank",
+          3
         ],
         [
           "has",
@@ -1986,7 +2020,22 @@
         ]
       ],
       "layout": {
-        "text-size": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              10
+            ],
+            [
+              5,
+              11
+            ],
+            [
+              8,
+              13
+            ]
+          ]
+        },
         "icon-image": {
           "base": 1,
           "stops": [
@@ -2034,7 +2083,8 @@
         "text-halo-width": 1,
         "text-halo-blur": 1,
         "icon-opacity": 0.7
-      }
+      },
+      "minzoom": 5
     },
     {
       "id": "place_city_large",
@@ -2053,17 +2103,14 @@
           "Point"
         ],
         [
-          "all",
-          [
-            "<=",
-            "rank",
-            3
-          ],
-          [
-            "==",
-            "class",
-            "city"
-          ]
+          "<=",
+          "rank",
+          3
+        ],
+        [
+          "==",
+          "class",
+          "city"
         ],
         [
           "!has",
@@ -2071,7 +2118,26 @@
         ]
       ],
       "layout": {
-        "text-size": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              10
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              8,
+              14
+            ]
+          ]
+        },
         "icon-image": {
           "base": 1,
           "stops": [
@@ -2138,17 +2204,14 @@
           "Point"
         ],
         [
-          "all",
-          [
-            "<=",
-            "rank",
-            3
-          ],
-          [
-            "==",
-            "class",
-            "city"
-          ]
+          "<=",
+          "rank",
+          3
+        ],
+        [
+          "==",
+          "class",
+          "city"
         ],
         [
           "has",
@@ -2156,7 +2219,26 @@
         ]
       ],
       "layout": {
-        "text-size": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              10
+            ],
+            [
+              4,
+              11
+            ],
+            [
+              5,
+              12
+            ],
+            [
+              8,
+              14
+            ]
+          ]
+        },
         "icon-image": {
           "base": 1,
           "stops": [
@@ -2254,6 +2336,10 @@
             [
               5,
               13
+            ],
+            [
+              8,
+              16
             ]
           ]
         }
@@ -2263,7 +2349,8 @@
         "text-halo-color": "rgba(0,0,0,0.7)",
         "text-halo-width": 1,
         "text-halo-blur": 1
-      }
+      },
+      "minzoom": 0
     },
     {
       "id": "place_state-en",
@@ -2313,6 +2400,10 @@
             [
               5,
               13
+            ],
+            [
+              8,
+              16
             ]
           ]
         }
