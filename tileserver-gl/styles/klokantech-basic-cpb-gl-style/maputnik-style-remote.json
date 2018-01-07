@@ -1628,6 +1628,110 @@
       }
     },
     {
+      "id": "state_label",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "state"
+        ],
+        [
+          "!has",
+          "name:en"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-max-width": 10,
+        "text-size": {
+          "stops": [
+            [
+              3,
+              10
+            ],
+            [
+              8,
+              22
+            ]
+          ]
+        },
+        "text-transform": "uppercase"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 13%)",
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      },
+      "minzoom": 3
+    },
+    {
+      "id": "state_label-en",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "state"
+        ],
+        [
+          "has",
+          "name:en"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name:en}\n{name:nonlatin}",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-max-width": 10,
+        "text-size": {
+          "stops": [
+            [
+              3,
+              10
+            ],
+            [
+              8,
+              22
+            ]
+          ]
+        },
+        "text-transform": "uppercase"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 13%)",
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      },
+      "minzoom": 3
+    },
+    {
       "id": "country_label-other",
       "type": "symbol",
       "source": "openmaptiles",
@@ -1721,6 +1825,10 @@
             [
               3,
               12
+            ],
+            [
+              4,
+              16
             ],
             [
               8,
