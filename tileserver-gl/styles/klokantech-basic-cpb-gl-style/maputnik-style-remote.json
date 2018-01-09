@@ -1681,10 +1681,9 @@
         "text-transform": "uppercase"
       },
       "paint": {
-        "text-color": "hsl(0, 0%, 13%)",
-        "text-halo-color": "rgba(255,255,255,0.75)",
-        "text-halo-width": 2,
-        "text-halo-blur": 0
+        "text-color": "#633",
+        "text-halo-width": 1.2,
+        "text-halo-color": "rgba(255,255,255,0.8)"
       },
       "minzoom": 3
     },
@@ -1733,10 +1732,9 @@
         "text-transform": "uppercase"
       },
       "paint": {
-        "text-color": "hsl(0, 0%, 13%)",
-        "text-halo-color": "rgba(255,255,255,0.75)",
-        "text-halo-width": 2,
-        "text-halo-blur": 0
+        "text-color": "#633",
+        "text-halo-width": 1.2,
+        "text-halo-color": "rgba(255,255,255,0.8)"
       },
       "minzoom": 3
     },
