@@ -175,6 +175,10 @@ Finally, the `style-local.json` is just for Tileserver GL (and is referenced in 
 
 The most important thing to remember is that, once you get the style working how you want it--regardless of whether you're using the local or remote maputnik style file--you *must* apply those changes to the other two style files.  And be sure to also fire up Tileserver GL to check your work.  I've seen cases where Maputnik and Tileserver GL interpret the style JSON differently.
 
+#### Bug Fixing
+
+You may notice that the Dark Matter CPB and Klokantech Basic CPB styles have two extra `style-local-*` files, one for fixing clipped countries, and another for fixing clipped states.  I noticed at levels 0-2 that the label for New Zealand would get clipped and appear as "New Zeala".  Similarly, the labels for Pennsylvania and Mississippi would get clipped at level 4.  These extra style files simply remove the labels for those problem labels altogether.  There's probably a more efficient way of doing it, combining it all into a single style file with more rules.  I tried that, and it seemed to work in Maputnik, but then didn't work in Tileserver GL, maybe because they interpret the rule cascading differently?  Anyway, for my final tileset, it was easy enough to just create separate style files and then generate levels 0-2 with `style-local-fixed-clipped-countries.json`, levels 3 and 5-12 with `style-local.json`, and level 4 with `style-local-fixed-clipped-states.json`. 
+
 #### Running Maputnik
 
 From this project's root directory, launch Maputnik to edit the OSM Bright CPB style with:
