@@ -80,6 +80,12 @@
             "bounds" : [-180, -85.0511, 180, 85.0511]
          }
       },
+      "klokantech-basic-cpb-english-only" : {
+         "style" : "klokantech-basic-cpb-english-only-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
       "osm-bright" : {
          "style" : "osm-bright-gl-style-v1.3/style-local.json",
          "tilejson" : {
