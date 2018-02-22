@@ -22,11 +22,63 @@ Googling that and you'll find a bunch of posts which pretty much just say, "scre
 
 #### Installing with Docker
 
-Despite complaints from coworkers about how annoying Docker is, it seems to be my best (only?) option for the Mac, so I installed [Docker](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac) and ran it.
+Despite complaints from coworkers about how annoying Docker is, it seems to be my best (only?) option for the Mac, so I installed [Docker](https://docs.docker.com/docker-for-mac/install/#download-docker-for-mac), ran it, and logged in.
 
-Following the instructions at [https://openmaptiles.org/docs/host/tileserver-gl/](https://openmaptiles.org/docs/host/tileserver-gl/), I installed tileserver-gl by doing this:
+Following the instructions at [https://openmaptiles.org/docs/host/tileserver-gl/](https://openmaptiles.org/docs/host/tileserver-gl/), I tried installing tileserver-gl by doing this:
 
 	docker pull klokantech/tileserver-gl
+
+Since nothing can ever just be easy, that failed with this error:
+
+```
+$ docker pull klokantech/tileserver-gl
+Using default tag: latest
+Error response from daemon: Get https://registry-1.docker.io/v2/klokantech/tileserver-gl/manifests/latest: unauthorized: incorrect username or password
+```
+
+Hmmm, so even though I was logged in to Docker in the menu item thing, maybe I need to log in on the command line too? So I tried this:
+
+```
+$ docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username (bartley@cmu.edu): 
+Password: 
+Error response from daemon: Get https://registry-1.docker.io/v2/: unauthorized: incorrect username or password
+```
+
+OK, now that's just weird.  I tried again, this time with my username instead of my email address:
+
+```
+$ docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username (bartley@cmu.edu): chrisbartley
+Password: 
+Login Succeeded
+```
+
+I'm beginning to understand why my coworkers complain abut Docker [sigh].  Anyway, after that, the installation of tileserver-gl worked fine:
+
+```
+$ docker pull klokantech/tileserver-gl
+Using default tag: latest
+latest: Pulling from klokantech/tileserver-gl
+3e731ddb7fc9: Pull complete 
+47cafa6a79d0: Pull complete 
+79fcf5a213c7: Pull complete 
+68e99216b7ad: Pull complete 
+4822563608bb: Pull complete 
+bd223a5eb9f8: Pull complete 
+af1ecaa3fb91: Pull complete 
+ab24011f6a41: Pull complete 
+0f94701268e1: Pull complete 
+e7c634c94e3f: Pull complete 
+b1c059f00dd4: Pull complete 
+09313f85da09: Pull complete 
+b63ade49cecb: Pull complete 
+5d6c8934e668: Pull complete 
+Digest: sha256:12b907724940051ffb2ca7dfe82c7da9e4e51e84556f5514173858e407e8f81c
+Status: Downloaded newer image for klokantech/tileserver-gl:latest
+```
 
 #### Other Required Pieces
 
@@ -85,7 +137,7 @@ If the mbtiles files you downloaded have filenames different than what's referen
 
 #### Running Tileserver GL
 
-Now that all the pieces are in place, you should be able to run tileserver-gl and explore the map data with each of the various styles.  Open a terminal window and `cd` to the root directory of this project and run either of these commands, depending on which data set you want to view:
+Now that all the pieces are in place, you should be able to run tileserver-gl and explore the map data with each of the various styles.  Open a terminal window and `cd` to the `tileserver-gl` directory of this project and run one of these commands, depending on which data set you want to view:
 
     docker run --rm -it -v $(pwd):/createlab -p 8080:80 klokantech/tileserver-gl --config /createlab/tileserver-gl-config-planet.json
 
