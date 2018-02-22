@@ -8,6 +8,58 @@
       }
    },
    "styles" : {
+      "dark-matter-cpb" : {
+         "style" : "dark-matter-cpb-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
+      "dark-matter-cpb-fixed-clipped-countries" : {
+         "style" : "dark-matter-cpb-gl-style/style-local-fixed-clipped-countries.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
+      "dark-matter-cpb-fixed-clipped-states" : {
+         "style" : "dark-matter-cpb-gl-style/style-local-fixed-clipped-states.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
+      "dark-matter-cpb-english-only" : {
+         "style" : "dark-matter-cpb-english-only-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
+
+
+      "klokantech-basic-cpb" : {
+         "style" : "klokantech-basic-cpb-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
+      "klokantech-basic-cpb-fixed-clipped-countries" : {
+         "style" : "klokantech-basic-cpb-gl-style/style-local-fixed-clipped-countries.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
+      "klokantech-basic-cpb-fixed-clipped-states" : {
+         "style" : "klokantech-basic-cpb-gl-style/style-local-fixed-clipped-states.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
+      "klokantech-basic-cpb-english-only" : {
+         "style" : "klokantech-basic-cpb-english-only-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
+
+
       "dark-map-country-names-only" : {
          "style" : "dark-map-country-names-only-gl-style/style-local.json",
          "tilejson" : {
@@ -32,56 +84,16 @@
             "bounds" : [-180, -85.0511, 180, 85.0511]
          }
       },
+
+
       "dark-matter" : {
          "style" : "dark-matter-gl-style-v1.3/style-local.json",
          "tilejson" : {
             "bounds" : [-180, -85.0511, 180, 85.0511]
          }
       },
-      "dark-matter-cpb" : {
-         "style" : "dark-matter-cpb-gl-style/style-local.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
-      "dark-matter-cpb-fixed-clipped-countries" : {
-         "style" : "dark-matter-cpb-gl-style/style-local-fixed-clipped-countries.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
-      "dark-matter-cpb-fixed-clipped-states" : {
-         "style" : "dark-matter-cpb-gl-style/style-local-fixed-clipped-states.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
       "klokantech-basic" : {
          "style" : "klokantech-basic-gl-style-v1.3/style-local.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
-      "klokantech-basic-cpb" : {
-         "style" : "klokantech-basic-cpb-gl-style/style-local.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
-      "klokantech-basic-cpb-fixed-clipped-countries" : {
-         "style" : "klokantech-basic-cpb-gl-style/style-local-fixed-clipped-countries.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
-      "klokantech-basic-cpb-fixed-clipped-states" : {
-         "style" : "klokantech-basic-cpb-gl-style/style-local-fixed-clipped-states.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
-      "klokantech-basic-cpb-english-only" : {
-         "style" : "klokantech-basic-cpb-english-only-gl-style/style-local.json",
          "tilejson" : {
             "bounds" : [-180, -85.0511, 180, 85.0511]
          }
