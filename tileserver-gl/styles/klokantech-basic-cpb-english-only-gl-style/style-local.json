@@ -1963,7 +1963,7 @@
       }
     },
     {
-      "id": "clip_fix_new_zealand",
+      "id": "clip_fix_countries_level_0-2",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "place",
@@ -2012,7 +2012,7 @@
       "minzoom": 0
     },
     {
-      "id": "clip_fix_new_albania",
+      "id": "clip_fix_countries_level_4",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "place",
