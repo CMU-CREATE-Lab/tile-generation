@@ -231,7 +231,7 @@ The most important thing to remember is that, once you get the style working how
 
 You may notice that the Dark Matter CPB and Klokantech Basic CPB styles have two extra `style-local-*` files, one for fixing clipped countries, and another for fixing clipped states.  I noticed at levels 0-2 that the label for New Zealand would get clipped and appear as "New Zeala".  Similarly, the labels for Pennsylvania and Mississippi would get clipped at level 4.  These extra style files simply remove the labels for those problem labels altogether.  There's probably a more efficient way of doing it, combining it all into a single style file with more rules.  I tried that, and it seemed to work in Maputnik, but then didn't work in Tileserver GL, maybe because they interpret the rule cascading differently?  Anyway, for my final tileset, it was easy enough to just create separate style files and then generate levels 0-2 with `style-local-fixed-clipped-countries.json`, levels 3 and 5-12 with `style-local.json`, and level 4 with `style-local-fixed-clipped-states.json`.
 
-**Update**: I've figured out how to merge these clipped name fixes into the same style file as the main one, and have done so for `dark-matter-cpb-english-only-gl-style`.
+**Update**: I've figured out how to merge these clipped name fixes into the same style file as the main one, and have done so for `dark-matter-cpb-english-only-gl-style` and `klokantech-basic-cpb-english-only-gl-style`.
 
 #### Running Maputnik
 
