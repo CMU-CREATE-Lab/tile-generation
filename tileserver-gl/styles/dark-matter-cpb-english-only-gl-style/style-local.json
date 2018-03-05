@@ -3147,6 +3147,60 @@
         "text-halo-blur": 1
       },
       "minzoom": 5
+    },
+    {
+      "id": "place_clip_fix_PA_and_MS",
+      "type": "symbol",
+      "metadata": {
+        "mapbox:group": "101da9f13b64a08fa4b6ac1168e89e5f"
+      },
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "maxzoom": 4,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "state"
+        ],
+        [
+          "in",
+          "name:en",
+          "Pennsylvania",
+          "Mississippi"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{name:en}",
+        "text-font": [
+          "Metropolis Regular",
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-transform": "none",
+        "text-size": {
+          "stops": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "rgb(180,180,180)",
+        "text-halo-color": "rgba(0,0,0,0.7)",
+        "text-halo-width": 1,
+        "text-halo-blur": 1
+      },
+      "minzoom": 3
     }
   ],
     "id": "ciwf4jmfe00882qmzvu5vh0zx"
