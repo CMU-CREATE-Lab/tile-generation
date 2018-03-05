@@ -1961,6 +1961,351 @@
         "text-halo-width": 2,
         "text-halo-blur": 0
       }
+    },
+    {
+      "id": "clip_fix_countries_level_0-2",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "maxzoom": 2,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "country"
+        ],
+        [
+          "==",
+          "name:en",
+          "New Zealand"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name:en}",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-max-width": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 13%)",
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      },
+      "minzoom": 0
+    },
+    {
+      "id": "clip_fix_countries_level_4",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "maxzoom": 4,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "country"
+        ],
+        [
+          "==",
+          "name:en",
+          "Albania"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name:en}",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-max-width": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 13%)",
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      },
+      "minzoom": 3
+    },
+    {
+      "id": "clip_fix_countries_level_5",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "maxzoom": 5,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "country"
+        ],
+        [
+          "in",
+          "name:en",
+          "Macedonia",
+          "Dominican Republic"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name:en}",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-max-width": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 13%)",
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      },
+      "minzoom": 4
+    },
+    {
+      "id": "clip_fix_state_level_4",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "maxzoom": 4,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "state"
+        ],
+        [
+          "in",
+          "name:en",
+          "Pennsylvania",
+          "Mississippi"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name:en}",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-max-width": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 13%)",
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      },
+      "minzoom": 3
+    },
+    {
+      "id": "clip_fix_state_level_6-7",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "maxzoom": 7,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "state"
+        ],
+        [
+          "==",
+          "name:en",
+          "Republic of Mordovia"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name:en}",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-max-width": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 13%)",
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      },
+      "minzoom": 5
+    },
+    {
+      "id": "clip_fix_state_level_8",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "maxzoom": 8,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "state"
+        ],
+        [
+          "==",
+          "name:en",
+          "Mordovia"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name:en}",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-max-width": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 13%)",
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      },
+      "minzoom": 7
+    },
+    {
+      "id": "clip_fix_city_level_4",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "maxzoom": 4,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "==",
+          "class",
+          "city"
+        ],
+        [
+          "==",
+          "name:en",
+          "Nizhny Novgorod"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name:en}",
+        "text-font": [
+          "Klokantech Noto Sans Regular",
+          "Klokantech Noto Sans CJK Regular"
+        ],
+        "text-max-width": 10,
+        "text-size": {
+          "stops": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsl(0, 0%, 13%)",
+        "text-halo-color": "rgba(255,255,255,0.75)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      },
+      "minzoom": 3
     }
   ],
   "id": "ciwf4zbsv007y2pmt2rspc1dc"
