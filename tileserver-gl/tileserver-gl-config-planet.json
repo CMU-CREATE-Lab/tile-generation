@@ -32,6 +32,12 @@
             "bounds" : [-180, -85.0511, 180, 85.0511]
          }
       },
+      "dark-matter-cpb-no-labels" : {
+         "style" : "dark-matter-cpb-no-labels-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
 
 
       "klokantech-basic-cpb" : {
@@ -58,28 +64,8 @@
             "bounds" : [-180, -85.0511, 180, 85.0511]
          }
       },
-
-
-      "dark-map-country-names-only" : {
-         "style" : "dark-map-country-names-only-gl-style/style-local.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
-      "dark-map-country-names-only-fixed-clipped-countries" : {
-         "style" : "dark-map-country-names-only-gl-style/style-local-fixed-clipped-countries.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
-      "light-map-country-names-only" : {
-         "style" : "light-map-country-names-only-gl-style/style-local.json",
-         "tilejson" : {
-            "bounds" : [-180, -85.0511, 180, 85.0511]
-         }
-      },
-      "light-map-country-names-only-fixed-clipped-countries" : {
-         "style" : "light-map-country-names-only-gl-style/style-local-fixed-clipped-countries.json",
+      "klokantech-basic-cpb-no-labels" : {
+         "style" : "klokantech-basic-cpb-no-labels-gl-style/style-local.json",
          "tilejson" : {
             "bounds" : [-180, -85.0511, 180, 85.0511]
          }
