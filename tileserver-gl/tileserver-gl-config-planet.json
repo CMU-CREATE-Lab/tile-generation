@@ -38,7 +38,12 @@
             "bounds" : [-180, -85.0511, 180, 85.0511]
          }
       },
-
+      "dark-matter-cpb-no-labels-no-borders" : {
+         "style" : "dark-matter-cpb-no-labels-no-borders-gl-style/style-local.json",
+         "tilejson" : {
+            "bounds" : [-180, -85.0511, 180, 85.0511]
+         }
+      },
 
       "klokantech-basic-cpb" : {
          "style" : "klokantech-basic-cpb-gl-style/style-local.json",
